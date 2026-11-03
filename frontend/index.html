@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Studio AI</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background: #101114;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        h1 { color: #a78bfa; }
+
+        .card {
+            background: #1b1c22;
+            border: 1px solid #30313a;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 16px 0 8px;
+        }
+
+        textarea, select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #41424d;
+            background: #101114;
+            color: white;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 14px 22px;
+            background: #8b5cf6;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover { background: #7c3aed; }
+
+        .status { color: #aaa; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Pedro Studio AI</h1>
+        <p class="status">Seu estúdio pessoal de criação de vídeos com IA.</p>
+
+        <section class="card">
+            <h2>Novo vídeo</h2>
+
+            <label for="script">Roteiro do vídeo</label>
+            <textarea id="script" placeholder="Digite ou cole seu roteiro aqui..."></textarea>
+
+            <label for="format">Formato do vídeo</label>
+            <select id="format">
+                <option value="9:16">Vertical (9:16)</option>
+                <option value="16:9">Horizontal (16:9)</option>
+                <option value="1:1">Quadrado (1:1)</option>
+            </select>
+
+            <label for="scene">Cenário</label>
+            <select id="scene">
+                <option>Escritório moderno</option>
+                <option>Estúdio profissional</option>
+                <option>Ambiente externo</option>
+            </select>
+
+            <label for="clothing">Vestuário</label>
+            <select id="clothing">
+                <option>Social</option>
+                <option>Casual</option>
+                <option>Executivo</option>
+            </select>
+
+            <label for="reference">Vídeo de referência</label>
+            <input type="file" id="reference" accept="video/*">
+
+            <button onclick="generateVideo()">Preparar vídeo</button>
+
+            <p id="status" class="status">Aguardando roteiro...</p>
+        </section>
+    </main>
+
+    <script>
+        function generateVideo() {
+            const script = document.getElementById("script").value;
+            const status = document.getElementById("status");
+
+            if (!script.trim()) {
+                status.textContent = "Digite um roteiro primeiro.";
+                return;
+            }
+
+            status.textContent =
+                "Interface preparada! A integração com a IA será implementada nas próximas etapas.";
+        }
+    </script>
+</body>
+</html>
