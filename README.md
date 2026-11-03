@@ -1,35 +1,28 @@
-# Pedro Studio AI
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-Plataforma pessoal de geração de vídeos com inteligência artificial.
+app = FastAPI(
+    title="Pedro Studio AI",
+    description="API pessoal para geração de vídeos com inteligência artificial.",
+    version="0.1.0"
+)
 
-## Objetivo
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-Criar vídeos realistas utilizando meu próprio rosto e minha própria voz, a partir de roteiros escritos.
+@app.get("/")
+def home():
+    return {
+        "projeto": "Pedro Studio AI",
+        "status": "online",
+        "mensagem": "Backend iniciado com sucesso!"
+    }
 
-## Funcionalidades planejadas
-
-- Upload de vídeos de referência do rosto e da voz.
-- Geração de vídeos a partir de textos.
-- Sincronização labial natural.
-- Escolha de voz, cenário e vestuário.
-- Legendas automáticas e editáveis.
-- Pré-visualização dos vídeos.
-- Histórico de gerações.
-- Download dos vídeos em MP4.
-- Formatos vertical (9:16), horizontal (16:9) e quadrado (1:1).
-
-## Tecnologias planejadas
-
-- Frontend: React
-- Backend: Python e FastAPI
-- Processamento de vídeo: FFmpeg
-- Modelos de inteligência artificial: em avaliação
-- Processamento em GPU na nuvem.
-
-## Idioma
-
-Português brasileiro (PT-BR).
-
-## Status
-
-Projeto em desenvolvimento. A arquitetura e os modelos ainda precisam ser implementados e testados.
+@app.get("/health")
+def health():
+    return {"status": "ok"}
